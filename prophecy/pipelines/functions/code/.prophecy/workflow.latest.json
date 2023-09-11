@@ -1,0 +1,230 @@
+{
+  "metainfo" : {
+    "id" : "1",
+    "uri" : "pipelines/workflow",
+    "language" : "scala",
+    "fabricId" : "4615",
+    "frontEndLanguage" : "sql",
+    "mode" : "batch",
+    "udfs" : {
+      "language" : "scala",
+      "udfs" : [ ],
+      "functionPackageName" : "prophecy_nimbus_team.scalaudfs.functions",
+      "sharedFunctionPackageNames" : [ ]
+    },
+    "udafs" : {
+      "language" : "scala",
+      "code" : "package udfs\n\nimport org.apache.spark.sql.expressions._\nimport org.apache.spark.sql.types._\nimport org.apache.spark.sql._\n\n/**\n  * Here you can define your custom aggregate functions.\n  *\n  * Make sure to register your `udafs` in the register_udafs function below.\n  *\n  * Example:\n  *\n  * object GeometricMean extends UserDefinedAggregateFunction {\n  *   // This is the input fields for your aggregate function.\n  *   override def inputSchema: org.apache.spark.sql.types.StructType =\n  *     StructType(StructField(\"value\", DoubleType) :: Nil)\n  *\n  *   // This is the internal fields you keep for computing your aggregate.\n  *   override def bufferSchema: StructType = StructType(\n  *     StructField(\"count\", LongType) ::\n  *     StructField(\"product\", DoubleType) :: Nil\n  *   )\n  *\n  *   // This is the output type of your aggregatation function.\n  *   override def dataType: DataType = DoubleType\n  *\n  *   override def deterministic: Boolean = true\n  *\n  *   // This is the initial value for your buffer schema.\n  *   override def initialize(buffer: MutableAggregationBuffer): Unit = {\n  *     buffer(0) = 0L\n  *     buffer(1) = 1.0\n  *   }\n  *\n  *   // This is how to update your buffer schema given an input.\n  *   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {\n  *     buffer(0) = buffer.getAs[Long](0) + 1\n  *     buffer(1) = buffer.getAs[Double](1) * input.getAs[Double](0)\n  *   }\n  *\n  *   // This is how to merge two objects with the bufferSchema type.\n  *   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {\n  *     buffer1(0) = buffer1.getAs[Long](0) + buffer2.getAs[Long](0)\n  *     buffer1(1) = buffer1.getAs[Double](1) * buffer2.getAs[Double](1)\n  *   }\n  *\n  *   // This is where you output the final value, given the final value of your bufferSchema.\n  *   override def evaluate(buffer: Row): Any = {\n  *     math.pow(buffer.getDouble(1), 1.toDouble / buffer.getLong(0))\n  *   }\n  * }\n  *\n  */\n\n\nobject UDAFs {\n  /**\n    * Registers UDAFs with Spark SQL\n    */\n  def registerUDAFs(spark: SparkSession): Unit = {\n    /**\n      * Example:\n      *\n      * spark.udf.register(\"gm\", GeometricMean)\n      *\n      */\n\n\n  }\n}\n"
+    },
+    "configuration" : {
+      "common" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "oldCommon" : {
+        "type" : "record",
+        "fields" : [ ]
+      },
+      "fabrics" : { },
+      "instances" : { },
+      "selected" : "default",
+      "nonEditable" : [ ],
+      "isSubscribedPipelineWithPipelineConfigs" : false
+    },
+    "sparkConf" : [ ],
+    "hadoopConf" : [ ],
+    "codeMode" : "sparse",
+    "buildSystem" : "maven",
+    "externalDependencies" : [ ],
+    "dependentProjectExternalDependencies" : [ ],
+    "isImported" : false,
+    "interimMode" : "Full",
+    "interimModeEnabled" : true,
+    "visualCodeInterimMode" : "Disabled",
+    "recordsLimit" : {
+      "enabled" : false,
+      "value" : 1000
+    },
+    "topLevelPackage" : "io.prophecy.pipelines.functions",
+    "configTopLevelPackage" : "",
+    "configurationVersion" : "v1"
+  },
+  "connections" : [ {
+    "id" : "2_0J55EbUgFYv2HsRX1x_$$50OPy9Ms-2iqvCoVOmRO-",
+    "source" : "p2Sq1B2u0lnnksdwulzlP$$an-jGhQg9LAQQBQ9A_zJi",
+    "sourcePort" : "qCGALApLzmrKEjVus69W8$$uO_x04y03LoaPelHpo-kr",
+    "target" : "UcYXDSOhI5sgQCHHtIdW-$$hSttPLLm6YGeb0y70hnJ6",
+    "targetPort" : "ZExL8R5ZmYwj1zrTGWNQN$$4tzLZdyi5G8cQZg7VPdmP"
+  }, {
+    "id" : "sNLMfhVTxJWjO24XSgzhT$$fZbgq9leX3KK_jJrjoI4t",
+    "source" : "UcYXDSOhI5sgQCHHtIdW-$$hSttPLLm6YGeb0y70hnJ6",
+    "sourcePort" : "YP5y9bk13XXHbSwMbgi8Z$$sAiEqZJQ5staW7qlrmY7w",
+    "target" : "GCUDtPLb0gQkaMlkl_p65$$jUwtArD0bCKcuQph8LX6S",
+    "targetPort" : "R8g2v-khKF_B5UOF9X-x_$$qDG2sAiE4k7wFOOhb30q5"
+  } ],
+  "processes" : {
+    "p2Sq1B2u0lnnksdwulzlP$$an-jGhQg9LAQQBQ9A_zJi" : {
+      "id" : "p2Sq1B2u0lnnksdwulzlP$$an-jGhQg9LAQQBQ9A_zJi",
+      "component" : "SQLStatement",
+      "metadata" : {
+        "label" : "SQLStatement_0",
+        "slug" : "SQLStatement_0",
+        "x" : 120,
+        "y" : 120,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "qCGALApLzmrKEjVus69W8$$uO_x04y03LoaPelHpo-kr",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "fileTabs" : [ {
+          "path" : "out",
+          "id" : "qCGALApLzmrKEjVus69W8$$uO_x04y03LoaPelHpo-kr",
+          "language" : "sql",
+          "content" : "select 1"
+        } ],
+        "inputPortNames" : [ ]
+      }
+    },
+    "UcYXDSOhI5sgQCHHtIdW-$$hSttPLLm6YGeb0y70hnJ6" : {
+      "id" : "UcYXDSOhI5sgQCHHtIdW-$$hSttPLLm6YGeb0y70hnJ6",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "Reformat_1",
+        "slug" : "Reformat_1",
+        "x" : 320,
+        "y" : 120,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "ZExL8R5ZmYwj1zrTGWNQN$$4tzLZdyi5G8cQZg7VPdmP",
+          "slug" : "in",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "1",
+              "type" : "integer",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ {
+          "id" : "YP5y9bk13XXHbSwMbgi8Z$$sAiEqZJQ5staW7qlrmY7w",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "columnsSelector" : [ ],
+        "expressions" : [ {
+          "target" : "a",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "\"ABC\""
+          },
+          "description" : ""
+        }, {
+          "target" : "b",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "123"
+          },
+          "description" : ""
+        } ]
+      }
+    },
+    "GCUDtPLb0gQkaMlkl_p65$$jUwtArD0bCKcuQph8LX6S" : {
+      "id" : "GCUDtPLb0gQkaMlkl_p65$$jUwtArD0bCKcuQph8LX6S",
+      "component" : "Reformat",
+      "metadata" : {
+        "label" : "Reformat_2",
+        "slug" : "Reformat_2",
+        "x" : 520,
+        "y" : 120,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "R8g2v-khKF_B5UOF9X-x_$$qDG2sAiE4k7wFOOhb30q5",
+          "slug" : "in",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "a",
+              "type" : "string",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "b",
+              "type" : "integer",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ {
+          "id" : "0jLynrLIOuG6QvCl0TNgR$$6l4Q29sWSYWMdwGaamfTC",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false
+      },
+      "properties" : {
+        "columnsSelector" : [ "R8g2v-khKF_B5UOF9X-x_$$qDG2sAiE4k7wFOOhb30q5##a", "R8g2v-khKF_B5UOF9X-x_$$qDG2sAiE4k7wFOOhb30q5##b" ],
+        "expressions" : [ {
+          "target" : "a",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "a"
+          },
+          "description" : ""
+        }, {
+          "target" : "b",
+          "expression" : {
+            "format" : "sql",
+            "expression" : "times2(b)"
+          },
+          "description" : ""
+        } ]
+      }
+    }
+  },
+  "ports" : {
+    "inputs" : [ ],
+    "outputs" : [ ],
+    "selectedInputFields" : [ ],
+    "isCustomOutputSchema" : false
+  }
+}
