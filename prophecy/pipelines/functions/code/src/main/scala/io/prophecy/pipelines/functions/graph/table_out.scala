@@ -12,6 +12,10 @@ import java.time._
 object table_out {
 
   def apply(context: Context, in: DataFrame): Unit =
-    in.write.format("delta").mode("overwrite").saveAsTable("`test`.`test_out`")
+    in.write
+      .format("hive")
+      .option("fileFormat", "parquet")
+      .mode("overwrite")
+      .saveAsTable("`test`.`test_out`")
 
 }
