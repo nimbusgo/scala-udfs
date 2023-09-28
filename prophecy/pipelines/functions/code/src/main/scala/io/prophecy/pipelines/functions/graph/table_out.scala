@@ -9,12 +9,9 @@ import org.apache.spark.sql.types._
 import org.apache.spark.sql.expressions._
 import java.time._
 
-object json_out {
+object table_out {
 
-  def apply(context: Context, in: DataFrame): Unit = {
-    var writer = in.write.format("json").mode("overwrite")
-    writer = writer
-    writer.save("/tmp/json_out")
-  }
+  def apply(context: Context, in: DataFrame): Unit =
+    in.write.format("delta").mode("overwrite").saveAsTable("`test`.`test_out`")
 
 }

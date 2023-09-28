@@ -78,6 +78,12 @@
     "sourcePort" : "0jLynrLIOuG6QvCl0TNgR$$6l4Q29sWSYWMdwGaamfTC",
     "target" : "GA8nUpNDnFPWQEptRz5Jn$$toUbOuBBZdYM1CFNKbt7m",
     "targetPort" : "uGR3b5PhoQdR7tCsDTIAF$$Bj6Ys_HT1rcHTcmwj0jDT"
+  }, {
+    "id" : "6G1uSdHDffzhfb41GPoUi",
+    "source" : "GCUDtPLb0gQkaMlkl_p65$$jUwtArD0bCKcuQph8LX6S",
+    "sourcePort" : "0jLynrLIOuG6QvCl0TNgR$$6l4Q29sWSYWMdwGaamfTC",
+    "target" : "utsNrsVXlXaQpnnfyinsq$$kLR-CFhR5rzF4SdG9ZIbO",
+    "targetPort" : "Qf8e9w6_X5mclGm8OtnSo$$0IoOep_SX54GxsJw7ftnY"
   } ],
   "processes" : {
     "GA8nUpNDnFPWQEptRz5Jn$$toUbOuBBZdYM1CFNKbt7m" : {
@@ -86,8 +92,8 @@
       "metadata" : {
         "label" : "json_out",
         "slug" : "json_out",
-        "x" : 680,
-        "y" : 100,
+        "x" : 720,
+        "y" : 120,
         "phase" : 0,
         "cache" : false,
         "detailedStats" : false,
@@ -137,7 +143,7 @@
         "label" : "Reformat_1",
         "slug" : "Reformat_1",
         "x" : 320,
-        "y" : 120,
+        "y" : 220,
         "phase" : 0,
         "cache" : false,
         "detailedStats" : false,
@@ -200,7 +206,7 @@
         "label" : "SQLStatement_0",
         "slug" : "SQLStatement_0",
         "x" : 120,
-        "y" : 120,
+        "y" : 220,
         "phase" : 0,
         "cache" : false,
         "detailedStats" : false,
@@ -237,7 +243,7 @@
         "label" : "Reformat_2",
         "slug" : "Reformat_2",
         "x" : 520,
-        "y" : 120,
+        "y" : 220,
         "phase" : 0,
         "cache" : false,
         "detailedStats" : false,
@@ -300,6 +306,56 @@
       "componentInfo" : {
         "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12651.git&subPath=&tag=0.0.3&projectSubscriptionProjectId=12651&path=gems/Reformat",
         "projectName" : "ProphecySparkBasicsScala"
+      }
+    },
+    "utsNrsVXlXaQpnnfyinsq$$kLR-CFhR5rzF4SdG9ZIbO" : {
+      "id" : "utsNrsVXlXaQpnnfyinsq$$kLR-CFhR5rzF4SdG9ZIbO",
+      "component" : "Target",
+      "metadata" : {
+        "label" : "table_out",
+        "slug" : "table_out",
+        "x" : 720,
+        "y" : 320,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "Qf8e9w6_X5mclGm8OtnSo$$0IoOep_SX54GxsJw7ftnY",
+          "slug" : "in",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "a",
+              "type" : "string",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "b",
+              "type" : "integer",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
+        } ],
+        "outputs" : [ ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "datasetId" : "datasets/table_out"
       }
     }
   },

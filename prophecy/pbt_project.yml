@@ -23,6 +23,7 @@ pipelines:
       inputs: []
       outputs:
       - datasets/json_out
+      - datasets/table_out
     subgraphs: []
     dependencies: {}
 datasets:
@@ -39,6 +40,19 @@ datasets:
         description: ''
         author: nimbus@prophecy.io
         createdAt: '2023-09-28 21:14:41'
+  datasets/table_out:
+    name: table_out
+    description: ''
+    author: nimbus@prophecy.io
+    createdAt: '2023-09-28 21:26:52'
+    mode: batch
+    physicalDatasets:
+      product-workspace:
+        fabricId: 4615
+        datasetType: Database
+        description: ''
+        author: nimbus@prophecy.io
+        createdAt: '2023-09-28 21:26:52'
 templates: {}
 jobs: {}
 gemContainer:
