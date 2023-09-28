@@ -20,6 +20,7 @@ object Main {
     val df_SQLStatement_0 = SQLStatement_0(context)
     val df_Reformat_1     = Reformat_1(context, df_SQLStatement_0)
     val df_Reformat_2     = Reformat_2(context, df_Reformat_1)
+    json_out(context, df_Reformat_2)
   }
 
   def main(args: Array[String]): Unit = {

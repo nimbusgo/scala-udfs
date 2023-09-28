@@ -1,8 +1,6 @@
 package io.prophecy.pipelines.functions.graph
 
 import io.prophecy.libs._
-import io.prophecy.pipelines.functions.udfs.PipelineInitCode._
-import io.prophecy.pipelines.functions.udfs.UDFs._
 import io.prophecy.pipelines.functions.config.Context
 import org.apache.spark._
 import org.apache.spark.sql._
@@ -11,9 +9,12 @@ import org.apache.spark.sql.types._
 import org.apache.spark.sql.expressions._
 import java.time._
 
-object Reformat_2 {
+object json_out {
 
-  def apply(context: Context, in: DataFrame): DataFrame =
-    in.select(col("a"), mult_self(col("b")).as("b"))
+  def apply(context: Context, in: DataFrame): Unit = {
+    var writer = in.write.format("json")
+    writer = writer
+    writer.save("/tmp/json_out")
+  }
 
 }

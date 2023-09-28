@@ -9,11 +9,11 @@ import org.apache.spark.sql._
 object UDFs extends Serializable {
 
   def registerUDFs(spark: SparkSession) = {
-    spark.udf.register("times2", times2)
+    spark.udf.register("mult_self", mult_self)
     registerAllUDFs(spark)
   }
 
-  def times2 =
+  def mult_self =
     udf((value: Int) => value * value)
 
 }

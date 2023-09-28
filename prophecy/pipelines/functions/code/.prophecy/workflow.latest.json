@@ -1,7 +1,10 @@
 {
   "metainfo" : {
+    "migrationVersions" : {
+      "gemBuilderVersion" : "v1"
+    },
     "id" : "1",
-    "uri" : "pipelines/workflow",
+    "uri" : "pipelines/functions",
     "language" : "scala",
     "fabricId" : "4615",
     "frontEndLanguage" : "sql",
@@ -10,7 +13,7 @@
       "language" : "scala",
       "udfs" : [ ],
       "functionPackageName" : "prophecy_nimbus_team.scalaudfs.functions",
-      "sharedFunctionPackageNames" : [ ]
+      "sharedFunctionPackageNames" : [ "io.prophecy.scalagems.functions", "io.prophecy.warehousegems.functions" ]
     },
     "udafs" : {
       "language" : "scala",
@@ -36,7 +39,15 @@
     "codeMode" : "sparse",
     "buildSystem" : "maven",
     "externalDependencies" : [ ],
-    "dependentProjectExternalDependencies" : [ ],
+    "dependentProjectExternalDependencies" : [ {
+      "projectUID" : "12651",
+      "projectName" : "ProphecySparkBasicsScala",
+      "externalDependencies" : [ ]
+    }, {
+      "projectUID" : "12652",
+      "projectName" : "ProphecyWarehouseScala",
+      "externalDependencies" : [ ]
+    } ],
     "isImported" : false,
     "interimMode" : "Full",
     "interimModeEnabled" : true,
@@ -61,38 +72,62 @@
     "sourcePort" : "YP5y9bk13XXHbSwMbgi8Z$$sAiEqZJQ5staW7qlrmY7w",
     "target" : "GCUDtPLb0gQkaMlkl_p65$$jUwtArD0bCKcuQph8LX6S",
     "targetPort" : "R8g2v-khKF_B5UOF9X-x_$$qDG2sAiE4k7wFOOhb30q5"
+  }, {
+    "id" : "Ev4nVUhc-9uyT08Amw3mD$$uB416JWc2rOwQ_ArShGhO",
+    "source" : "GCUDtPLb0gQkaMlkl_p65$$jUwtArD0bCKcuQph8LX6S",
+    "sourcePort" : "0jLynrLIOuG6QvCl0TNgR$$6l4Q29sWSYWMdwGaamfTC",
+    "target" : "GA8nUpNDnFPWQEptRz5Jn$$toUbOuBBZdYM1CFNKbt7m",
+    "targetPort" : "uGR3b5PhoQdR7tCsDTIAF$$Bj6Ys_HT1rcHTcmwj0jDT"
   } ],
   "processes" : {
-    "p2Sq1B2u0lnnksdwulzlP$$an-jGhQg9LAQQBQ9A_zJi" : {
-      "id" : "p2Sq1B2u0lnnksdwulzlP$$an-jGhQg9LAQQBQ9A_zJi",
-      "component" : "SQLStatement",
+    "GA8nUpNDnFPWQEptRz5Jn$$toUbOuBBZdYM1CFNKbt7m" : {
+      "id" : "GA8nUpNDnFPWQEptRz5Jn$$toUbOuBBZdYM1CFNKbt7m",
+      "component" : "Target",
       "metadata" : {
-        "label" : "SQLStatement_0",
-        "slug" : "SQLStatement_0",
-        "x" : 120,
-        "y" : 120,
+        "label" : "json_out",
+        "slug" : "json_out",
+        "x" : 680,
+        "y" : 100,
         "phase" : 0,
         "cache" : false,
         "detailedStats" : false,
         "isImported" : false
       },
       "ports" : {
-        "inputs" : [ ],
-        "outputs" : [ {
-          "id" : "qCGALApLzmrKEjVus69W8$$uO_x04y03LoaPelHpo-kr",
-          "slug" : "out"
+        "inputs" : [ {
+          "id" : "uGR3b5PhoQdR7tCsDTIAF$$Bj6Ys_HT1rcHTcmwj0jDT",
+          "slug" : "in",
+          "schema" : {
+            "type" : "struct",
+            "fields" : [ {
+              "name" : "a",
+              "type" : "string",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            }, {
+              "name" : "b",
+              "type" : "integer",
+              "nullable" : false,
+              "metadata" : {
+                "description" : "",
+                "mappings" : [ ],
+                "tags" : [ ]
+              }
+            } ]
+          },
+          "isStreaming" : false
         } ],
+        "outputs" : [ ],
         "selectedInputFields" : [ ],
-        "isCustomOutputSchema" : false
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
       },
       "properties" : {
-        "fileTabs" : [ {
-          "path" : "out",
-          "id" : "qCGALApLzmrKEjVus69W8$$uO_x04y03LoaPelHpo-kr",
-          "language" : "sql",
-          "content" : "select 1"
-        } ],
-        "inputPortNames" : [ ]
+        "datasetId" : "datasets/json_out"
       }
     },
     "UcYXDSOhI5sgQCHHtIdW-$$hSttPLLm6YGeb0y70hnJ6" : {
@@ -132,7 +167,8 @@
           "slug" : "out"
         } ],
         "selectedInputFields" : [ ],
-        "isCustomOutputSchema" : false
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
       },
       "properties" : {
         "columnsSelector" : [ ],
@@ -151,6 +187,47 @@
           },
           "description" : ""
         } ]
+      },
+      "componentInfo" : {
+        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12651.git&subPath=&tag=0.0.3&projectSubscriptionProjectId=12651&path=gems/Reformat",
+        "projectName" : "ProphecySparkBasicsScala"
+      }
+    },
+    "p2Sq1B2u0lnnksdwulzlP$$an-jGhQg9LAQQBQ9A_zJi" : {
+      "id" : "p2Sq1B2u0lnnksdwulzlP$$an-jGhQg9LAQQBQ9A_zJi",
+      "component" : "SQLStatement",
+      "metadata" : {
+        "label" : "SQLStatement_0",
+        "slug" : "SQLStatement_0",
+        "x" : 120,
+        "y" : 120,
+        "phase" : 0,
+        "cache" : false,
+        "detailedStats" : false,
+        "isImported" : false
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "qCGALApLzmrKEjVus69W8$$uO_x04y03LoaPelHpo-kr",
+          "slug" : "out"
+        } ],
+        "selectedInputFields" : [ ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      },
+      "properties" : {
+        "fileTabs" : [ {
+          "path" : "out",
+          "id" : "qCGALApLzmrKEjVus69W8$$uO_x04y03LoaPelHpo-kr",
+          "language" : "sql",
+          "content" : "select 1"
+        } ],
+        "inputPortNames" : [ ]
+      },
+      "componentInfo" : {
+        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12651.git&subPath=&tag=0.0.3&projectSubscriptionProjectId=12651&path=gems/SQLStatement",
+        "projectName" : "ProphecySparkBasicsScala"
       }
     },
     "GCUDtPLb0gQkaMlkl_p65$$jUwtArD0bCKcuQph8LX6S" : {
@@ -199,7 +276,8 @@
           "slug" : "out"
         } ],
         "selectedInputFields" : [ ],
-        "isCustomOutputSchema" : false
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
       },
       "properties" : {
         "columnsSelector" : [ "R8g2v-khKF_B5UOF9X-x_$$qDG2sAiE4k7wFOOhb30q5##a", "R8g2v-khKF_B5UOF9X-x_$$qDG2sAiE4k7wFOOhb30q5##b" ],
@@ -214,10 +292,14 @@
           "target" : "b",
           "expression" : {
             "format" : "sql",
-            "expression" : "times2(b)"
+            "expression" : "mult_self(b)"
           },
           "description" : ""
         } ]
+      },
+      "componentInfo" : {
+        "gemId" : "gitUri=http://gitserver:3000/DxEheDCJ_team_5751/DxEheDCJ_project_12651.git&subPath=&tag=0.0.3&projectSubscriptionProjectId=12651&path=gems/Reformat",
+        "projectName" : "ProphecySparkBasicsScala"
       }
     }
   },
@@ -225,6 +307,7 @@
     "inputs" : [ ],
     "outputs" : [ ],
     "selectedInputFields" : [ ],
-    "isCustomOutputSchema" : false
+    "isCustomOutputSchema" : false,
+    "autoUpdateOnRun" : false
   }
 }
